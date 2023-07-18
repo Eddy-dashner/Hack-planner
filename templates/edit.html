@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack planner App: Edit</title>
+</head>
+<body>
+    <h1>Edit Item</h1>
+    <form action="/edit/{{item_id}}" method="post">
+        <input type="text" name="item" value="'{{item}}">
+        <button type="submit">Save</button>
+
+    </form>
+    
+</body>
+</html>
