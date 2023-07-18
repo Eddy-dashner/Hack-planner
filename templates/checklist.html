@@ -1,0 +1,26 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack planner App</title>
+</head>
+<body>
+    <h1>Hack planner</h1>
+    <ul>
+        {% for item in items %}
+        <li>
+            {{ item }}
+            <a href="/edit/{{ loop.index }}">Edit</a>
+            <a href="/delete/{{ loop.index }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/add" method="post"> 
+        <input type="text", name="item", placeholder="Enter item">
+        <button type="submit">Add</button>
+
+    </form>
+    
+</body>
+</html>
