@@ -5,24 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hack planner App</title>
+     <link rel="stylesheet" href="{{url_for('static', filename='static.css') }}">
 </head>
 <body>
-    <h1>Hack planner</h1>
+    <div class="container">
+        <h1>Hack planner</h1>
+            <ul class="checklist-items ">
+            {% for item in items %}
+            <li>
 
-    <ul>
-        {% for item in items %}
-        <li>
             {{ item }}
             <a href="/edit/{{ loop.index }}">Edit</a>
             <a href="/delete/{{ loop.index }}">Delete</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <form action="/add" method="post"> 
+            <button class="remind-button" onclick="setReminder('{{ item[1] }}')">Remind</button>
+            </li>
+            {% endfor %}
+        </ul>
+        <form class="add-form" action="/add" method="post"> 
         <input type="text", name="item", placeholder="Enter item">
         <button type="submit">Add</button>
 
-    </form>
+        </form>
+    </div>
+    <script>
+        function setReminder(item) {
+            setTimeout(function() {
+                var reminder = confirm("Reminder: " + item);
+            }, 5 * 1000); // 5 seconds
+            sendReminderEmail(item)
+        }
+    </script>
     
 </body>
 </html>
